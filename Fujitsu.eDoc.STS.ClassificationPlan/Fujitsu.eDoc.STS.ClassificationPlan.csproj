@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5BF71376-C54D-462E-A769-0FF2E4877B62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Fujitsu.eDoc.STS.ClassificationPlan</RootNamespace>
+    <AssemblyName>Fujitsu.eDoc.STS.ClassificationPlan</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Fujitsu.Invia.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fujitsu.eDoc.ClassCodeAdmin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fujitsu.eDoc.Core.DLL.5.1.26.8778\lib\Fujitsu.eDoc.ClassCodeAdmin.dll</HintPath>
+    </Reference>
+    <Reference Include="Fujitsu.eDoc.Codebehind, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8f50cf2fc45d3fd2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fujitsu.eDoc.Core.DLL.5.1.26.8778\lib\Fujitsu.eDoc.Codebehind.dll</HintPath>
+    </Reference>
+    <Reference Include="Fujitsu.eDoc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=402811e591a0c620, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fujitsu.eDoc.Core.DLL.5.1.26.8778\lib\Fujitsu.eDoc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Fujitsu.eDoc.Core.DefaultValue.Codebehind, Version=1.0.0.0, Culture=neutral, PublicKeyToken=402811e591a0c620, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fujitsu.eDoc.Core.DLL.5.1.26.8778\lib\Fujitsu.eDoc.Core.DefaultValue.Codebehind.dll</HintPath>
+    </Reference>
+    <Reference Include="Fujitsu.eDoc.ImportData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=402811e591a0c620, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fujitsu.eDoc.Core.DLL.5.1.26.8778\lib\Fujitsu.eDoc.ImportData.dll</HintPath>
+    </Reference>
+    <Reference Include="Fujitsu.eDoc.Notification, Version=1.0.0.0, Culture=neutral, PublicKeyToken=402811e591a0c620, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fujitsu.eDoc.Core.DLL.5.1.26.8778\lib\Fujitsu.eDoc.Notification.dll</HintPath>
+    </Reference>
+    <Reference Include="SI.Biz.Binding, Version=4.0.0.0, Culture=neutral, PublicKeyToken=84474dc3c65e4430, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\SI 5.0.0\SI.Biz.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="SI.Biz.Core.DataTypes, Version=4.0.0.0, Culture=neutral, PublicKeyToken=84474dc3c65e4430, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\SI 5.0.0\SI.Biz.Core.DataTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="SI.Biz.Data.PropertyProvider, Version=4.0.0.0, Culture=neutral, PublicKeyToken=84474dc3c65e4430, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\SI 5.0.0\SI.Biz.Data.PropertyProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="SI.Biz.Facade, Version=4.0.0.0, Culture=neutral, PublicKeyToken=84474dc3c65e4430, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\SI 5.0.0\SI.Biz.Facade.dll</HintPath>
+    </Reference>
+    <Reference Include="SI.Biz.Meta, Version=4.0.0.0, Culture=neutral, PublicKeyToken=84474dc3c65e4430, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\SI 5.0.0\SI.Biz.Meta.dll</HintPath>
+    </Reference>
+    <Reference Include="SI.Biz.Meta.AdminBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=84474dc3c65e4430, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\SI 5.0.0\SI.Biz.Meta.AdminBase.dll</HintPath>
+    </Reference>
+    <Reference Include="SI.Common.UserState, Version=4.0.0.0, Culture=neutral, PublicKeyToken=af1788dd2c6dee3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\SI 5.0.0\SI.Common.UserState.dll</HintPath>
+    </Reference>
+    <Reference Include="SI.Data.MetaX, Version=4.0.0.0, Culture=neutral, PublicKeyToken=84474dc3c65e4430, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\SI 5.0.0\SI.Data.MetaX.dll</HintPath>
+    </Reference>
+    <Reference Include="SI.Data.SqlGen, Version=4.0.0.0, Culture=neutral, PublicKeyToken=84474dc3c65e4430, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Packages\SI 5.0.0\SI.Data.SqlGen.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\DBConnection.cs" />
+    <Compile Include="BLL\FacetManagerBLL.cs" />
+    <Compile Include="BLL\MainGroupManagerBLL.cs" />
+    <Compile Include="BLL\Manager.cs" />
+    <Compile Include="BLL\SecondLevelManagerBLL.cs" />
+    <Compile Include="BLL\ThirdLevelManagerBLL.cs" />
+    <Compile Include="Connected Services\SF1510_FacetService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SF1510_KlasseService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SF1510_KlassifikationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SF1510_KlassifikationSystemService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="EventLog.cs" />
+    <Compile Include="FacetService.cs" />
+    <Compile Include="KlassifikationService.cs" />
+    <Compile Include="KlassifikationSystemService.cs" />
+    <Compile Include="KlasseService.cs" />
+    <Compile Include="IKlassifikationSystemService.cs" />
+    <Compile Include="IKlassifikationService.cs" />
+    <Compile Include="IKlasseService.cs" />
+    <Compile Include="IFacetService.cs" />
+    <Compile Include="Model\NoarkSubArchive.cs" />
+    <Compile Include="Model\EdocEmnePlan.cs" />
+    <Compile Include="Model\STSKLE.cs" />
+    <Compile Include="ProcessEngine\BatchClassificationPlanJob.cs" />
+    <Compile Include="Model\NoarkClassificationType.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\ISecondLevelRepository.cs" />
+    <Compile Include="Repo\IMainGroupRepository.cs" />
+    <Compile Include="Repo\IThirdLevelRepository.cs" />
+    <Compile Include="Repo\MainGroupRepositorycs.cs" />
+    <Compile Include="Repo\SecondLevelRepository.cs" />
+    <Compile Include="Repo\ThirdLevelRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\AuthorityContext_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\CallContext_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Facet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\FacetOperationer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\FacetService.wsdl" />
+    <None Include="Connected Services\SF1510_FacetService\FacetServiceMsg.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.importerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.ImporterResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.laesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.LaesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.listResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.ListResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.opretResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.OpretResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.passiverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.PassiverResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.RequestHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.retResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.RetResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.sletResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.SletResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.soegResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_FacetService.SoegResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\policies.wsdl" />
+    <None Include="Connected Services\SF1510_FacetService\RequestHeader.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\SagDokObjekt.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_FacetService\ServiceplatformFaultMessage.wsdl" />
+    <None Include="Connected Services\SF1510_FacetService\ServiceplatformFault_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\AuthorityContext_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\CallContext_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.SAPA.ClassificationPlan.SF1510_KlasseService.ImporterResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.importerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.ImporterResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.laesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.LaesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.listResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.ListResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.opretResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.OpretResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.passiverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.PassiverResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.RequestHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.retResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.RetResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.sletResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.SletResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.soegResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlasseService.SoegResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\Klasse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\KlasseOperationer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\KlasseService.wsdl" />
+    <None Include="Connected Services\SF1510_KlasseService\KlasseServiceMsg.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\policies.wsdl" />
+    <None Include="Connected Services\SF1510_KlasseService\RequestHeader.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\SagDokObjekt.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlasseService\ServiceplatformFaultMessage.wsdl" />
+    <None Include="Connected Services\SF1510_KlasseService\ServiceplatformFault_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\AuthorityContext_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\CallContext_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.importerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.ImporterResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.laesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.LaesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.listResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.ListResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.opretResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.OpretResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.passiverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.PassiverResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.RequestHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.retResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.RetResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.sletResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.SletResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.soegResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationService.SoegResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\Klassifikation.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\KlassifikationOperationer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\KlassifikationService.wsdl" />
+    <None Include="Connected Services\SF1510_KlassifikationService\KlassifikationServiceMsg.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\policies.wsdl" />
+    <None Include="Connected Services\SF1510_KlassifikationService\RequestHeader.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\SagDokObjekt.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationService\ServiceplatformFaultMessage.wsdl" />
+    <None Include="Connected Services\SF1510_KlassifikationService\ServiceplatformFault_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\AuthorityContext_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\CallContext_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\Facet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\FacetOperationer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationSystemService.fremsoegobjekthierarkiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationSystemService.FremsoegobjekthierarkiResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationSystemService.importResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationSystemService.ImportResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationSystemService.RequestHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\Klasse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\KlasseOperationer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\Klassifikation.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\KlassifikationOperationer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\KlassifikationSystemOperationer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\KlassifikationSystemService.wsdl" />
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\KlassifikationSystemServiceMsg.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\policies.wsdl" />
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\RequestHeader.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\SagDokObjekt.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\ServiceplatformFaultMessage.wsdl" />
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\ServiceplatformFault_1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Fujitsu.Invia.snk" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="ProcessEngine\Workunit\FuBatchClassificationPlanJob.wu" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\SF1510_FacetService\" />
+    <WCFMetadataStorage Include="Connected Services\SF1510_KlasseService\" />
+    <WCFMetadataStorage Include="Connected Services\SF1510_KlassifikationService\" />
+    <WCFMetadataStorage Include="Connected Services\SF1510_KlassifikationSystemService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_FacetService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_FacetService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_FacetService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_KlasseService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_KlasseService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_KlasseService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_KlassifikationService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_KlassifikationService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_KlassifikationService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SF1510_KlassifikationSystemService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProcessEngine\Workunit\FuBatchClassificationPlanJob.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XML\GetAllKLEs.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\GetNoarkSubArchives.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\GetNoarkClassificationType.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\GetAllFacets.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\GetCodeTableValues.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\gacutil.exe" /if "$(TargetPath)"
+IISRESET</PostBuildEvent>
+  </PropertyGroup>
+</Project>

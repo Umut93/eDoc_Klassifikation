@@ -1,0 +1,8 @@
+﻿<workUnit displayName="Synkroniserer FK KLE numre" id="E0E008EC-1369-4E6A-BA58-2324C91A2377" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\WorkUnit.xsd">
+  <description>Synkroniserer KLE nummer</description>
+  <executable>
+    <invoke>
+    </invoke>
+  </executable>
+  <job queue="Sys.OnceNightly" runAs="SystemDefault" resultType="none"/>
+</workUnit>

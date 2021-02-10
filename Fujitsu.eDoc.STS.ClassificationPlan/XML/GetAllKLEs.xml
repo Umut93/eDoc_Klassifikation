@@ -1,0 +1,26 @@
+﻿<QUERYDESC NAMESPACE="SIRIUS" ENTITY="Noark Classification code" SELECTTYPE="DATASET" DATASETFORMAT="XML" TAG="RECORDS" MAXROWS="0">
+  <RESULTFIELDS>
+    <METAITEM TAG="Recno">Recno</METAITEM>
+    <METAITEM TAG="Fu_sts_KLE_GUID">Fu_sts_KLE_GUID</METAITEM>
+    <METAITEM TAG="Code">Code</METAITEM>
+    <METAITEM TAG="Description">Description</METAITEM>
+    <METAITEM TAG="ToClassType">ToClassType</METAITEM>
+    <METAITEM TAG="ToSecondaryClassType">ToSecondaryClassType</METAITEM>
+  </RESULTFIELDS>
+  <RELATIONS>
+    <RELATION NAME="ToClassType">
+      <RELATIONS>
+        <RELATION NAME="ToSubArchive">
+        </RELATION>
+      </RELATIONS>
+      <RELATIONS />
+    </RELATION>
+  </RELATIONS>
+  <ORDERFIELDS>
+    <METAITEM DESC="0" ORDERSEQ="1">Recno</METAITEM>
+  </ORDERFIELDS>
+  <CRITERIA>
+    <METAITEM NAME="ToSecondaryClassType" OPERATOR="IS NOT NULL">
+    </METAITEM>
+  </CRITERIA>
+</QUERYDESC>
