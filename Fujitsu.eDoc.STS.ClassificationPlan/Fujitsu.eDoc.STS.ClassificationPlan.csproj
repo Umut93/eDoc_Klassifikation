@@ -116,6 +116,7 @@
     <Compile Include="BLL\Manager.cs" />
     <Compile Include="BLL\SecondLevelManagerBLL.cs" />
     <Compile Include="BLL\ThirdLevelManagerBLL.cs" />
+    <Compile Include="BLL\UserAccessKLESyncManagerBLL.cs" />
     <Compile Include="Connected Services\SF1510_FacetService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,6 +159,7 @@
     <Compile Include="Repo\MainGroupRepositorycs.cs" />
     <Compile Include="Repo\SecondLevelRepository.cs" />
     <Compile Include="Repo\ThirdLevelRepository.cs" />
+    <Compile Include="Repo\UseraccessKLESyncRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -540,7 +542,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\gacutil.exe" /if "$(TargetPath)"
-IISRESET</PostBuildEvent>
+    <PostBuildEvent>REM "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\gacutil.exe" /if "$(TargetPath)"
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

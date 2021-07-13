@@ -23,6 +23,7 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan.ProcessEngine
         SecondLevelManagerBLL secondLevelManagerBLL = new SecondLevelManagerBLL();
         ThirdLevelManagerBLL thirdLevelManagerBLL = new ThirdLevelManagerBLL();
         FacetManagerBLL facetManagerBLL = new FacetManagerBLL();
+        UserAccessKLESyncManagerBLL userAccessKLESyncManagerBLL = new UserAccessKLESyncManagerBLL();
 
         public async Task BatchSyncClassificationPlan()
         {
@@ -88,6 +89,9 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan.ProcessEngine
                 List<STSKLE> facets = stsKLES.Where(y => facetRegex.IsMatch(y.Code)).ToList();
                 facetManagerBLL.CreateFacet(facets, eDocFacets);
 
+                //Sync STS useraccess
+                progress = "Handling Sync STS useraccess";
+                userAccessKLESyncManagerBLL.SyncUserAccessWithKLE();
             }
 
             catch (Exception ex)
