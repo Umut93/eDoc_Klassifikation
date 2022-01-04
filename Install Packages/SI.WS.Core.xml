@@ -1,0 +1,29 @@
+<configuration FuRemove="false">
+	<SI.SurfaceCallableTypes FuRemove="false">
+		<type name="Fujitsu.eDoc.STS.ClassificationPlan.ProcessEngine.*"></type>
+	</SI.SurfaceCallableTypes>
+	<appSettings>
+		<add key="Klassifikation.CVR"/>
+		<add key="Klassifikation.ClientCertificate"/>
+		<add key="Klassifikation.Endpoint" />
+		<add key="Klassifikation.STSIssuer"/>
+		<add key="Klassifikation.STSCertificateAlias" />
+		<add key="Klassifikation.STSCertificate" />
+		<add key="Klassifikation.ServiceEntityId" />
+		<add key="Klassifikation.FKClassficationCertificateAlias" />
+		<add key="Klassifikation.FKClassficationCertificateSerialNumber"/>
+	  </appSettings>
+	  <system.serviceModel>
+		<bindings>
+		  <customBinding>
+			<binding name="KlassifikationSystem">
+			  <textMessageEncoding messageVersion="Soap12" />
+			  <httpsTransport />
+			</binding>
+		  </customBinding>
+		</bindings>
+		<client>
+	  <endpoint name="KlassifikationSystem" binding="customBinding" bindingConfiguration="KlassifikationSystem" contract="SF1510_V6_KlassifikationSystemService.KlassifikationSystemPortType"  />
+   	</client>
+	  </system.serviceModel>
+</configuration>

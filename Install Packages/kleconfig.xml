@@ -1,0 +1,11 @@
+<configuration FuRemove="false">
+  <SI.Biz.Serviced.Events FuRemove="false">
+    <eventHandlers FuRemove="false">
+            <add assemblyName="Fujitsu.Edoc.ClasscodeHistory">
+                <config>
+                    <enable handler="Fujitsu.Edoc.ClasscodeHistory.ClasscodeHistoryEventHandler"></enable>
+                </config>
+            </add>
+    </eventHandlers>
+  </SI.Biz.Serviced.Events>
+</configuration>

@@ -1,0 +1,4 @@
+<AppPool Name="Fujitsu eDoc ClassCodeAdmin [INSTANCENAME]" ManagedRuntimeVersion="v4.0" ManagedPipeLineMode="Integrated" UserName="[INSTANCENAME SERVICE ACCOUNT]" Password="[INSTANCENAME SERVICE ACCOUNT PASSWORD]" RecycleSchedule="04:00" />				 				   
+				    
+
+<Config PathTarget="[INSTANCE ROOT]\webservices\SI.WS.Core\Web.config" PathSrc="[SOURCEFOLDER]\InstallPackage\kleconfig.xml" />

@@ -1,0 +1,87 @@
+<Package Name="Emneord" Version="[VERSION]" InstallPath="[PROGRAMFILES]\Fujitsu\eDoc\_Instances\[INSTANCENAME]\KLE">
+  <Features>
+    <Feature Name="ClasseCodeUpdater" InstallOnServers="APP,BATCH">
+      <Components>
+        <CopyFolder FolderName="[SOURCEFOLDER]\Skemaer\*" Destination="[INSTALL PATH]\Skemaer\" />
+        <CopyFiles>
+          <Files>
+            <File Filename="[SOURCEFOLDER]\KLPlanUpdate.exe" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\KLPlanUpdate.exe.config" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\KLPlanUpdate.pdb" Destination="[INSTALL PATH]\" />
+          </Files>
+        </CopyFiles>
+      </Components>
+    </Feature>
+    <Feature Name="ClassCodeHistory" InstallOnServers="APP,BATCH">
+      <Components>
+        <GlobalAssemblyCache>
+          <Assemblies>
+            <Assembly Dll="[SOURCEFOLDER]\Fujitsu.Edoc.ClasscodeHistory.dll" />
+          </Assemblies>
+        </GlobalAssemblyCache>
+      </Components>
+    </Feature>
+    <Feature Name="Fujitsu.eDoc.ClassCodeAdmin.Site" InstallOnServers="NONE">
+      <Components>
+        <CopyFolder FolderName="[SOURCEFOLDER]\Fujitsu.eDoc.ClassCodeAdmin\*" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin" />
+        <CopyFolder FolderName="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.ClassCodeAdmin\bin\*" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin\bin" />
+        <CopyFolder FolderName="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.ClassCodeAdmin\Scripts\*" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin\Scripts" />
+        <CopyFolder FolderName="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.ClassCodeAdmin\Styles\*" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin\Styles" />
+        <CopyFiles>
+          <Files>
+            <File Filename="[SOURCEFOLDER]\DocumentFormat.OpenXml.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\DocumentFormat.OpenXml.xml" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\EnvDTE.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Fujitsu.eDoc.ClassCodeAdmin.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Fujitsu.eDoc.ClassCodeAdmin.dll.config" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Fujitsu.eDoc.ClassCodeAdmin.pdb" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Fujitsu.Edoc.ClasscodeHistory.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Fujitsu.Edoc.ClasscodeHistory.pdb" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\KLPlanUpdate.exe" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\KLPlanUpdate.exe.config" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\KLPlanUpdate.pdb" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Telerik.Web.Design.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Telerik.Web.UI.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Telerik.Web.UI.Skins.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Telerik.Windows.Documents.Core.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Telerik.Windows.Documents.Fixed.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Telerik.Windows.Documents.Flow.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\Telerik.Windows.Zip.dll" Destination="[INSTALL PATH]\" />
+            <File Filename="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.ClassCodeAdmin\ClassCodeAdmin.aspx" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin" />
+            <File Filename="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.ClassCodeAdmin\Global.asax" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin" />
+            <File Filename="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.ClassCodeAdmin\Site.Master" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin" />
+            <File Filename="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.ClassCodeAdmin\Web.config" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin" />
+            <File Filename="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.ClassCodeAdmin\Web.Debug.config" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin" />
+            <File Filename="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.ClassCodeAdmin\Web.Release.config" Destination="[INSTALL PATH]\Fujitsu.eDoc.ClassCodeAdmin" />
+          </Files>
+        </CopyFiles>
+      </Components>
+    </Feature>
+    <Feature Name="STSClassification" InstallOnServers="APP,BATCH">
+      <Components>
+        <GlobalAssemblyCache>
+          <Assemblies>
+            <Assembly Dll="[SOURCEFOLDER]\Fujitsu.eDoc.STS.ClassificationPlan.dll" />
+          </Assemblies>
+        </GlobalAssemblyCache>
+        <Config PathTarget="[INSTANCE ROOT]\webservices\SI.WS.Core\Web.config" PathSrc="[SOURCEFOLDER]\InstallPackage\SI.WS.Core.xml" />
+        <CopyFolder FolderName="[SOURCEFOLDER]\Workunits\*" Destination="[WORKUNITPARENTFOLDER]\" />
+        <XMLFile Filename="[INSTANCE ROOT]\webservices\SI.WS.Core\Web.config">
+          <SetXMLAttributes>
+          <XMLAttribute XPath="configuration/appSettings/add[@key='Klassifikation.CVR']" Name="value" Value="[SETTING:Klassifikation.CVR]" When="OnInstall" />
+          <XMLAttribute XPath="configuration/appSettings/add[@key='Klassifikation.ClientCertificate']" Name="value" Value="[SETTING:Klassifikation.ClientCertificate]" When="OnInstall" />
+          <XMLAttribute XPath="configuration/appSettings/add[@key='Klassifikation.Endpoint']" Name="value" Value="[SETTING:Klassifikation.Endpoint]" When="OnInstall" />
+          <XMLAttribute XPath="configuration/appSettings/add[@key='Klassifikation.STSIssuer']" Name="value" Value="[SETTING:Klassifikation.STSIssuer]" When="OnInstall" />
+          <XMLAttribute XPath="configuration/appSettings/add[@key='Klassifikation.STSCertificateAlias']" Name="value" Value="[SETTING:Klassifikation.STSCertificateAlias]" When="OnInstall" />
+          <XMLAttribute XPath="configuration/appSettings/add[@key='Klassifikation.STSCertificate']" Name="value" Value="[SETTING:Klassifikation.STSCertificate]" When="OnInstall" />
+          <XMLAttribute XPath="configuration/appSettings/add[@key='Klassifikation.ServiceEntityId']" Name="value" Value="[SETTING:Klassifikation.ServiceEntityId]" When="OnInstall" />
+          <XMLAttribute XPath="configuration/appSettings/add[@key='Klassifikation.FKClassficationCertificateAlias']" Name="value" Value="[SETTING:Klassifikation.FKClassficationCertificateAlias]" When="OnInstall" />
+          <XMLAttribute XPath="configuration/appSettings/add[@key='Klassifikation.FKClassficationCertificateSerialNumber']" Name="value" Value="[SETTING:Klassifikation.FKClassficationCertificateSerialNumber]" When="OnInstall" />
+          <XMLAttribute XPath="configuration/system.serviceModel/client/endpoint[@name='KlassifikationSystem']" Name="address" Value="[SETTING:Klassifikation.Endpoint]" When="OnInstall" />
+          </SetXMLAttributes>
+          </XMLFile>
+      </Components>
+    </Feature>
+  </Features>
+</Package>
