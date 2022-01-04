@@ -1,0 +1,14 @@
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\bin\Debug\Skemaer\KLE-Emneplan-version-2-0.xsd
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\bin\Debug\Skemaer\KLE-Handlingsfacetter-version-2-0.xsd
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\bin\Debug\Skemaer\KLE-Stikord-version-2-0.xsd
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\bin\Debug\KLPlanUpdate.exe.config
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\bin\Debug\KLPlanUpdate.exe
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\bin\Debug\KLPlanUpdate.pdb
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\obj\Debug\Fujitsu.Tools.KLPlanUpdate.FormConfig.resources
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\obj\Debug\Fujitsu.Tools.KLPlanUpdate.FormMain.resources
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\obj\Debug\Fujitsu.Tools.KLPlanUpdate.Properties.Resources.resources
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\obj\Debug\KLPlanUpdate.csproj.GenerateResource.cache
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\obj\Debug\KLPlanUpdate.csproj.CoreCompileInputs.cache
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\obj\Debug\KLPlanUpdate.exe
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\obj\Debug\KLPlanUpdate.pdb
+E:\D2\5.0\Source\Emneord\KLPlanUpdate\obj\Debug\KLPlanUpdate.csproj.AssemblyReference.cache

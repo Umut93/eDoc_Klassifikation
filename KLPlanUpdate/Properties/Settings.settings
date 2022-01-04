@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Fujitsu.Tools.KLPlanUpdate.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Archive" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">200000</Value>
+    </Setting>
+    <Setting Name="ArchivePeriod" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">200000</Value>
+    </Setting>
+    <Setting Name="FacetClassType" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">203000</Value>
+    </Setting>
+    <Setting Name="SubArchiveOffset" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">200000</Value>
+    </Setting>
+    <Setting Name="ClasscodeOffset" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">200000</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

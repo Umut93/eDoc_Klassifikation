@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- KLE-XML schema version 2.0 (dato 2011-02-15). Skemaet afloeser version 1.1 af KLE-XML schemaet.  -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KLE-Stikord">
+		<xs:annotation>
+			<xs:documentation>Rodelement. KLE-Stikord XML Schema version 2.0, dato 2011-02-15</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UdgivelsesDato" type="xs:date"/>
+				<xs:choice maxOccurs="unbounded">
+					<xs:element name="KLValideredeStikord" type="KLValideredeStikordKomponent"/>
+					<xs:element name="RetskildeStikord" type="RetskildeStikordKomponent"/>
+					<xs:element name="Sagsguider" type="SagsguiderKomponent" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="KLValideredeStikordKomponent">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="StikordTilEmneKategori" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:choice maxOccurs="unbounded">
+						<xs:element name="StikordTilHovedgruppe" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="HovedgruppeNr"/>
+									<xs:element name="HovedgruppeStikord" type="xs:string"/>
+									<xs:element name="StikordAdministrativInfo" type="KLEAdministrativInfoKomponent"/>
+									<xs:element name="StikordTilHovedgruppeFilter" type="FilterKomponent" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="StikordTilGruppe" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="GruppeNr"/>
+									<xs:element name="GruppeStikord" type="xs:string"/>
+									<xs:element name="StikordAdministrativInfo" type="KLEAdministrativInfoKomponent"/>
+									<xs:element name="StikordTilGruppeFilter" type="FilterKomponent" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="StikordTilEmne" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="EmneNr"/>
+									<xs:element name="EmneStikord" type="xs:string"/>
+									<xs:element name="StikordAdministrativInfo" type="KLEAdministrativInfoKomponent"/>
+									<xs:element name="StikordTilEmneFilter" type="FilterKomponent" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="StikordTilHandlingsfacet" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="HandlingsfacetNr"/>
+						<xs:element name="HandlingsfacetStikord" type="xs:string"/>
+						<xs:element name="StikordAdministrativInfo" type="KLEAdministrativInfoKomponent"/>
+						<xs:element name="StikordTilHandlingsfacetFilter" type="FilterKomponent" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="StikordTilEmneOgHandlingsfacet" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="EmneNr"/>
+						<xs:element ref="HandlingsfacetNr"/>
+						<xs:element name="EmneOgHandlingsfacetStikord" type="xs:string"/>
+						<xs:element name="StikordAdministrativInfo" type="KLEAdministrativInfoKomponent"/>
+						<xs:element name="StikordTilEmneOgHandlingsfacetFilter" type="FilterKomponent" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="RetskildeStikordKomponent">
+		<xs:choice>
+			<xs:element name="RetskildeStikordTilGruppe" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="GruppeNr">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="[0-9][0-9][.][0-9][0-9]"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="RetskildeReference" type="RetskildeReferenceKomponent"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RetskildeStikordTilEmne" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="EmneNr">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="[0-9][0-9][.][0-9][0-9][.][0-9][0-9]"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="RetskildeReference" type="RetskildeReferenceKomponent"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RetskildeStikordTilEmneOgHandlingsfacet" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="EmneNr"/>
+						<xs:element ref="HandlingsfacetNr"/>
+						<xs:element name="RetskildeReference" type="RetskildeReferenceKomponent"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="RetskildeReferenceKomponent">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="RetskildeTitel" type="xs:string"/>
+			<xs:element name="ParagrafEllerKapitel" type="xs:string" minOccurs="0"/>
+			<xs:element name="RetsinfoAccessionsNr" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>AccessionsNr saettes sammen med denne URL datastreng http://www.retsinfo.dk/_GETDOC_/ACCN/</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KLEAdministrativInfoKomponent">
+		<xs:sequence>
+			<xs:element name="OprettetDato" type="xs:date"/>
+			<xs:element name="RettetDato" type="xs:date" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Rettet Titel / dvs. bibeholdt nummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Historisk" minOccurs="0">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="UdgaaetDato" type="xs:date"/>
+						<xs:element name="Flyttet">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="FlyttetDato" type="xs:date"/>
+									<xs:element name="AfloestAf" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:choice>
+												<xs:element ref="HovedgruppeNr"/>
+												<xs:element ref="GruppeNr"/>
+												<xs:element ref="EmneNr"/>
+												<xs:element ref="HandlingsfacetNr"/>
+											</xs:choice>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SagsguiderKomponent">
+		<xs:sequence>
+			<xs:element name="SagsguideTitel" type="xs:string"/>
+			<xs:element name="SagsguideVejledning" type="VejledningKomponent" minOccurs="0"/>
+			<xs:element name="Sagsguide" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="EmneNr"/>
+						<xs:element ref="HandlingsfacetNr"/>
+						<xs:element name="SagsguideStikord" type="xs:string"/>
+						<xs:element name="SagsguideRetskildeReference" type="RetskildeReferenceKomponent"/>
+						<xs:element name="SagsguideAdministrativInfo" type="KLEAdministrativInfoKomponent"/>
+						<xs:element name="SagsguideFilter" type="FilterKomponent" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FilterKomponent">
+		<xs:annotation>
+			<xs:documentation>FilterKomponenten giver mulighed for at vise en delmaengde af KLE, saakaldte KLE Delplaner frem for hele planen. Valg af filter bør være dynamisk, så det er nemt for brugeren at udvide eller afgrænse visningen.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="FilterTitel" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VejledningKomponent">
+		<xs:sequence>
+			<xs:element name="VejledningTekst">
+				<xs:annotation>
+					<xs:documentation>Elementet indeholder XHTML tags og tillader dermed styling af tekst.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType mixed="0">
+					<xs:sequence maxOccurs="1">
+						<xs:element name="p" maxOccurs="unbounded">
+							<xs:complexType mixed="true">
+								<xs:choice minOccurs="0" maxOccurs="unbounded">
+									<xs:element name="i"/>
+									<xs:element name="b"/>
+									<xs:element name="ul">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="li" maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ol">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="li" maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="HovedgruppeNr">
+		<xs:annotation>
+			<xs:documentation>Globalt element, der anvendes af alle 3 KLE schemaer</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="GruppeNr">
+		<xs:annotation>
+			<xs:documentation>Globalt element, der anvendes af alle 3 KLE schemaer</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9][0-9][.][0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="EmneNr">
+		<xs:annotation>
+			<xs:documentation>Globalt element, der anvendes af alle 3 KLE schemaer</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9][0-9][.][0-9][0-9][.][0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="HandlingsfacetNr">
+		<xs:annotation>
+			<xs:documentation>Globalt element, der anvendes af alle 3 KLE schemaer</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="A[0-9][0-9]|P[0-9][0-9]|S[0-9][0-9]|Ø[0-9][0-9]|G[0-9][0-9]|K[0-9][0-9]|I[0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

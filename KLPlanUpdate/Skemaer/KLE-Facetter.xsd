@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Flemming Nielsen (Kommunernes Landsforening) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="HandlingsfacetKategoriType">
+		<xs:sequence>
+			<xs:element name="HandlingsfacetKategoriKode" type="xs:string"/>
+			<xs:element name="HandlingsfacetKategoriTekst" type="xs:string"/>
+			<xs:element name="HandlingsfacetKategoriVejledning">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="HfKTekst" type="xs:string" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="KLEAdm" type="KLEAdmType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HandlingsfacetVejledningType">
+		<xs:sequence>
+			<xs:element name="HfTekst" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="KLE-Handlingsfacetter">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="KLE-HandlingsfacetterType"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ulType">
+		<xs:sequence>
+			<xs:element name="li" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KLEAdmType">
+		<xs:sequence>
+			<xs:element name="Oprettet" type="xs:string"/>
+			<xs:element name="Flyttet" type="xs:string" minOccurs="0"/>
+			<xs:element name="Rettet" type="xs:string" minOccurs="0"/>
+			<xs:element name="Udgaaet" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="KendteFejlDubletter"/>
+	<xs:complexType name="RetskildeType">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="ParagrafEllerKapitel" type="xs:string" minOccurs="0"/>
+			<xs:element name="RetskildeTitel" type="xs:string"/>
+			<xs:element name="RetskildeRetsinfoURL" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="HandlingsfacetKode" type="xs:string"/>
+	<xs:complexType name="BevaringOgKassationsKodeType">
+		<xs:choice>
+			<xs:element name="K" type="xs:string"/>
+			<xs:element name="K5" type="xs:string"/>
+			<xs:element name="K10" type="xs:string"/>
+			<xs:element name="B" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="HovedgruppeServicesideType">
+		<xs:sequence>
+			<xs:element name="HgSOverskrift"/>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="HgSTekst" minOccurs="0"/>
+				<xs:element name="HgSListe" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ul" type="ulType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ParagrafEllerKapitel" type="xs:string"/>
+	<xs:element name="HandlingsfacetTekst" type="xs:string"/>
+	<xs:complexType name="KLE-HandlingsfacetterType">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="UdgivelsesDato" type="xs:anySimpleType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angives jf. NDR 3.0 (yyyy.mm.dd)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element name="HandlingsfacetKategori" type="HandlingsfacetKategoriType"/>
+				<xs:element name="Handlingsfacet" type="HandlingsfacetType" maxOccurs="unbounded"/>
+				<xs:element name="EgneHandlingsfacetterOverFireoghalvfjerds" type="EgneHandlingsfacetterOverFireoghalvfjerdsType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="EgneHandlingsfacetterOverFireoghalvfjerdsType">
+		<xs:sequence>
+			<xs:element ref="HandlingsfacetTekst"/>
+			<xs:element ref="HandlingsfacetKode"/>
+			<xs:element name="HandlingsfacetVejledning" type="HandlingsfacetVejledningType"/>
+			<xs:element name="BevaringOgKassationsKode" type="BevaringOgKassationsKodeType" minOccurs="0"/>
+			<xs:element name="EgenAdm" type="KLEAdmType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HandlingsfacetType">
+		<xs:sequence>
+			<xs:element ref="HandlingsfacetKode"/>
+			<xs:element ref="HandlingsfacetTekst"/>
+			<xs:element name="HandlingsfacetVejledning" type="HandlingsfacetVejledningType"/>
+			<xs:element name="BevaringOgKassationsKode" type="BevaringOgKassationsKodeType" minOccurs="0"/>
+			<xs:element name="KLEAdm" type="KLEAdmType"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Flemming Nielsen (Kommunernes Landsforening) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="ulType">
+		<xs:sequence>
+			<xs:element name="li" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KLEAdmType">
+		<xs:sequence>
+			<xs:element name="Oprettet" type="xs:string"/>
+			<xs:element name="Rettet" type="xs:string" minOccurs="0"/>
+			<xs:element name="Flyttet" type="xs:string" minOccurs="0"/>
+			<xs:element name="Udgaaet" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="KendteFejlDubletter"/>
+	<xs:complexType name="RetskildeType">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element ref="ParagrafEllerKapitel" minOccurs="0"/>
+			<xs:element name="RetskildeTitel" type="xs:string"/>
+			<xs:element name="RetskildeRetsinfoURL" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GruppeNr" type="xs:string"/>
+	<xs:element name="GruppeTekst" type="xs:string"/>
+	<xs:complexType name="GruppeServicesideType">
+		<xs:sequence>
+			<xs:element ref="GSOverskrift"/>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="GSTekst" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="GSListe" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmneNr" type="xs:string"/>
+	<xs:element name="EmneTekst" type="xs:string"/>
+	<xs:complexType name="EmneServicesideType">
+		<xs:sequence>
+			<xs:element ref="ESOverskrift"/>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="ESTekst" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="ESListe" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="HovedgruppeNr" type="xs:string"/>
+	<xs:complexType name="KLE-EmneplanType">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="UdgivelsesDato" type="xs:anySimpleType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angives jf. NDR 3.0 (yyyy.mm.dd)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element name="Hovedgruppe">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="HovedgruppeNr"/>
+							<xs:element name="HovedgruppeTekst" type="xs:string"/>
+							<xs:element name="KLEAdm">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="KLEAdmType"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="HovedgruppeServiceside" type="HovedgruppeServicesideType"/>
+							<xs:element name="Gruppe" type="GruppeType" maxOccurs="unbounded"/>
+							<xs:element name="EgneGrupperOverNiogfyrre" type="EgneGrupperOverNiogfyrreType" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="EgneGrupperOverNiogfyrreType">
+		<xs:sequence>
+			<xs:element ref="GruppeNr"/>
+			<xs:element ref="GruppeTekst"/>
+			<xs:element name="Retskilde" type="RetskildeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="EgenAdm" type="KLEAdmType"/>
+			<xs:element ref="KendteFejlDubletter" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="GruppeServiceside" type="GruppeServicesideType" minOccurs="0"/>
+			<xs:element name="EgneEmner">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="EmneNr"/>
+						<xs:element ref="EmneTekst"/>
+						<xs:element name="Retskilde" type="RetskildeType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="EgneEmner">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="EmneNr"/>
+									<xs:element ref="EmneTekst"/>
+									<xs:element name="Retskilde" type="RetskildeType" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element ref="KendteFejlDubletter" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="EmneServiceside" type="EmneServicesideType"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="EgenAdm" type="KLEAdmType"/>
+						<xs:element ref="KendteFejlDubletter" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="EmneServiceside" type="EmneServicesideType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GruppeType">
+		<xs:sequence>
+			<xs:element ref="GruppeNr"/>
+			<xs:element ref="GruppeTekst"/>
+			<xs:element name="KLEAdm">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="KLEAdmType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Retskilde" type="RetskildeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="GruppeServiceside" type="GruppeServicesideType" minOccurs="0"/>
+			<xs:element name="Emne" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="EmneNr"/>
+						<xs:element ref="EmneTekst"/>
+						<xs:element name="KLEAdm" type="KLEAdmType"/>
+						<xs:element name="Retskilde" type="RetskildeType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="EmneServiceside" type="EmneServicesideType" minOccurs="0"/>
+						<xs:element ref="KendteFejlDubletter" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="KendteFejlDubletter" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="EgneEmnerOverNiogfyrre" type="EgneEmnerOverNiogfyrreType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HovedgruppeServicesideType">
+		<xs:sequence>
+			<xs:element ref="HgSOverskrift"/>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="HgSTekst" minOccurs="0"/>
+				<xs:element ref="HgSListe" minOccurs="0"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EgneEmnerOverNiogfyrreType">
+		<xs:sequence>
+			<xs:element ref="EmneNr"/>
+			<xs:element ref="EmneTekst"/>
+			<xs:element name="Retskilde" type="RetskildeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="EgenAdm" type="KLEAdmType"/>
+			<xs:element ref="KendteFejlDubletter" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="EmneServiceside" type="EmneServicesideType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="KLE-Emneplan" type="KLE-EmneplanType">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ParagrafEllerKapitel" type="xs:string"/>
+	<xs:element name="ESTekst" type="xs:string"/>
+	<xs:element name="ESListe">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ul" type="ulType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GSTekst" type="xs:string"/>
+	<xs:element name="GSListe">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ul" type="ulType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="HgSTekst" type="xs:string"/>
+	<xs:element name="HgSListe">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ul" type="ulType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GSOverskrift" type="xs:string"/>
+	<xs:element name="ESOverskrift" type="xs:string"/>
+	<xs:element name="HgSOverskrift" type="xs:string"/>
+</xs:schema>

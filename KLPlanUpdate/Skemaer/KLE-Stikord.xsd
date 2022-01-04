@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Flemming Nielsen (Kommunernes Landsforening) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KLE-Stikord" type="KLE-StikordType">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="KLE-StikordType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="UdgivelsesDato" type="xs:anySimpleType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angives jf. NDR 3.0 (yyyy.mm.dd)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="KLValideredeStikord" type="KLValideredeStikordType"/>
+				<xs:element name="RetskildeStikord">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="RetskildeStikordTilGruppe">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="GruppeNr"/>
+										<xs:element ref="GruppeStikordTekst"/>
+										<xs:element ref="ParagrafEllerKapitel" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RetskildeStikordTilEmne">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="EmneNr"/>
+										<xs:element ref="EmneStikordTekst"/>
+										<xs:element ref="ParagrafEllerKapitel" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="KommunensEgneStikord">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="EgneStikordTilHandlingsfacet">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="HandlingsfacetKode"/>
+										<xs:element ref="HandlingsfacetStikordTekst"/>
+										<xs:element name="EgenAdm" type="KLEAdmType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="EgneStikordTilGruppe">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="GruppeNr"/>
+										<xs:element ref="GruppeStikordTekst"/>
+										<xs:element name="EgenAdm" type="KLEAdmType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="EgneStikordTilEmne">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="EmneNr"/>
+										<xs:element ref="EmneStikordTekst"/>
+										<xs:element name="EgenAdm" type="KLEAdmType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element ref="KendteFejlDubletter" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="KLValideredeStikordType">
+		<xs:choice>
+			<xs:element name="StikordTilEmneKategori">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="StikordTilHovedgruppe">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="HovedgruppeNr"/>
+									<xs:element ref="HovedgruppeStikordTekst"/>
+									<xs:element name="KLEAdm" type="KLEAdmType"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="StikordTilGruppe">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="GruppeNr"/>
+									<xs:element ref="GruppeStikordTekst"/>
+									<xs:element name="KLEAdm" type="KLEAdmType"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="StikordTilEmne">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="EmneNr"/>
+									<xs:element ref="EmneStikordTekst"/>
+									<xs:element name="KLEAdm" type="KLEAdmType"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="KendteFejlDubletter" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="StikordTilHandlingsfacet">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="HandlingsfacetKode"/>
+						<xs:element ref="HandlingsfacetStikordTekst"/>
+						<xs:element name="KLEAdm" type="KLEAdmType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="StikordTilEmneogHandlingsfacet">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="EmneNr"/>
+						<xs:element ref="HandlingsfacetKode"/>
+						<xs:element name="EmneogHandlingsfacetStikordTekst" type="xs:string"/>
+						<xs:element name="KLEAdm" type="KLEAdmType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="RetskildeType">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="ParagrafEllerKapitel" type="xs:string" minOccurs="0"/>
+			<xs:element name="RetskildeTitel" type="xs:string"/>
+			<xs:element name="RetskildeRetsinfoURL" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="HovedgruppeStikordTekst" type="xs:string"/>
+	<xs:complexType name="KLEAdmType">
+		<xs:sequence>
+			<xs:element name="Oprettet" type="xs:string"/>
+			<xs:element name="Rettet" type="xs:string" minOccurs="0"/>
+			<xs:element name="Flyttet" type="xs:string" minOccurs="0"/>
+			<xs:element name="Udgaaet" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="KendteFejlDubletter"/>
+	<xs:element name="GruppeNr" type="xs:string"/>
+	<xs:element name="EmneNr" type="xs:string"/>
+	<xs:element name="HovedgruppeNr" type="xs:string"/>
+	<xs:element name="HandlingsfacetNr" type="xs:string"/>
+	<xs:element name="GruppeStikordTekst" type="xs:string"/>
+	<xs:element name="EmneStikordTekst" type="xs:string"/>
+	<xs:element name="HandlingsfacetKode" type="xs:string"/>
+	<xs:element name="HandlingsfacetStikordTekst" type="xs:string"/>
+	<xs:element name="ParagrafEllerKapitel" type="xs:string"/>
+</xs:schema>
