@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fujitsu.eDoc.STS.ClassificationPlan.BLL
+﻿namespace Fujitsu.eDoc.STS.ClassificationPlan.BLL
 {
     public class DBConnection
     {

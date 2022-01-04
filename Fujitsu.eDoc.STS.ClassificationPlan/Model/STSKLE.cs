@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fujitsu.eDoc.STS.ClassificationPlan.Model
 {
@@ -27,23 +23,21 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan.Model
         public string TitleText { get; set; }
 
 
-        public object Item { get; set; }
+        public bool Item { get; set; }
 
         public bool IsExpired
         {
             get
             {
-                if (DateTime.TryParse(Item.ToString(), out DateTime result))
-                {
-                    return true;
-                }
-                else
+                if (Item)
                 {
                     return false;
                 }
+                else
+                {
+                    return true;
+                }
             }
         }
-
-
     }
 }

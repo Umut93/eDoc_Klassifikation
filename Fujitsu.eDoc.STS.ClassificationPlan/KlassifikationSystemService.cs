@@ -1,58 +1,51 @@
-﻿using Fujitsu.eDoc.STS.ClassificationPlan.Model;
-using Fujitsu.eDoc.STS.ClassificationPlan.SF1510_KlassifikationSystemService;
+﻿using Digst.OioIdws.Soap.Behaviors;
+using Digst.OioIdws.Soap.Bindings;
+using Fujitsu.eDoc.Organisation.Integration.Models;
+using Fujitsu.eDoc.STS.ClassificationPlan.Model;
+using Fujitsu.eDoc.STS.ClassificationPlan.SF1510_V6_KlassifikationSystemService;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens;
 using System.IO;
 using System.Linq;
+using System.Net.Security;
 using System.ServiceModel;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Fujitsu.eDoc.STS.ClassificationPlan
 {
     public class KlassifikationSystemService : IKlassifikationSystemService
     {
+        private int Offset = 0;
+        private const int MaxRetrieval = 5000;
+        List<STSKLE> STSKLEList = new List<STSKLE>();
+
         /// <summary>
         /// Retrieves all KLEs which either is expired or not.
         /// </summary>
-        /// <param name="CVR"></param>
         /// <param name="klasseServiceEndPoint"></param>
         /// <param name="certificateSerialNumber"></param>
         /// <param name="brugerVendtNoegle"></param>
         /// <returns></returns>
-        public async Task<List<STSKLE>> FremsoegobjekthierarkiAsync(string CVR, string klasseServiceEndPoint, string certificateSerialNumber, string brugerVendtNoegle)
+        /// 
+
+        public List<STSKLE> Fremsoegobjekthierarki(FKContext fKContext, string brugerVendtNoegle, SecurityToken token)
         {
-            List<STSKLE> list = new List<STSKLE>();
-            using (KlassifikationSystemPortTypeClient kl = GetKlassifikationSystemPortTypeClient(klasseServiceEndPoint, certificateSerialNumber))
+            var client = GetKlassifikationSystemPortTypeClient(fKContext, token);
+            try
             {
-                RequestHeaderType requestHeaderType = GetRequestHeaderType();
-                FremsoegobjekthierarkiRequestType requestType = new FremsoegobjekthierarkiRequestType
+                int receivedCount = MaxRetrieval;
+
+                while (receivedCount == MaxRetrieval)
                 {
-                    AuthorityContext = new AuthorityContextType { MunicipalityCVR = CVR },
-                    FremsoegObjekthierarkiInput = new FremsoegObjekthierarkiInputType
+                    fremsoegobjekthierarkiRequest requestType = CreateSearch(brugerVendtNoegle, Offset.ToString());
+                    var respons = client.fremsoegobjekthierarki(requestType);
+
+                    if (respons.FremsoegObjekthierarkiOutput.StandardRetur.StatusKode == "20")
                     {
-                        KlassifikationSoegEgenskab = new EgenskabType2
-                        {
-                            BrugervendtNoegleTekst = brugerVendtNoegle
-                        },
-                        SoegVirkning = new SoegVirkningType { FraTidspunkt = new TidspunktType { Item = true }, TilTidspunkt = new TidspunktType { Item = DateTime.Now } }
-                        //SoegRegistrering = new SoegRegistreringType { FraTidspunkt= new TidspunktType { Item= true} } Shoes also those that is UDGÅET. Shows an registry logning on each KLE
-                        //SoegRegistrering = new SoegRegistreringType { TilTidspunkt = new TidspunktType { Item = DateTime.Now }
+                        receivedCount = respons.FremsoegObjekthierarkiOutput.Klasser.Length;
+                        Offset += receivedCount;
 
-                    }
-
-                };
-
-                try
-                {
-                    var respons = await kl.fremsoegobjekthierarkiAsync(requestHeaderType, requestType);
-
-                    if (respons.FremsoegobjekthierarkiResponse1.FremsoegObjekthierarkiOutput.StandardRetur.StatusKode == "20")
-                    {
-                        Dictionary<string, string> stsKLEGUIDPair = new Dictionary<string, string>();
-
-                        FiltreretOejebliksbilledeType[] klasser = respons.FremsoegobjekthierarkiResponse1.FremsoegObjekthierarkiOutput.Klasser;
+                        FiltreretOejebliksbilledeType2[] klasser = respons.FremsoegObjekthierarkiOutput.Klasser;
                         for (int i = 0; i < klasser.Length; i++)
                         {
                             bool isSucceded = Guid.TryParse(klasser[i].ObjektType.UUIDIdentifikator, out Guid guid);
@@ -63,14 +56,14 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan
                                 {
 
                                     UUID = Guid.Parse(klasser[i].ObjektType.UUIDIdentifikator),
-                                    Code = klasser[i].Registrering[0].AttributListe.Egenskab[0].BrugervendtNoegleTekst,
-                                    TitleText = klasser[i].Registrering[0].AttributListe.Egenskab[0].TitelTekst,
-                                    Item = klasser[i].Registrering[0].RelationListe.Facet.Virkning.TilTidspunkt.Item
+                                    Code = klasser[i].Registrering[0].AttributListe.First().BrugervendtNoegleTekst,
+                                    TitleText = klasser[i].Registrering[0].AttributListe.First().TitelTekst,
+                                    Item = klasser[i].Registrering.First().TilstandListe.Last().ErPubliceretIndikator
                                 };
-                                list.Add(stsKle);
+                                STSKLEList.Add(stsKle);
                             }
                         }
-                        list.Sort(delegate (STSKLE a, STSKLE b)
+                        STSKLEList.Sort(delegate (STSKLE a, STSKLE b)
 
                         {
                             if (a.Code == null && b.Code == null) return 0;
@@ -78,40 +71,80 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan
                             else if (b.Code == null) return 1;
                             else return a.Code.CompareTo(b.Code);
                         });
-
-
                     }
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
                 }
 
             }
-            return list;
+            catch (Exception ex)
+            {
+                EventLog.LogToEventLog("Fremsoegobjekthierarki failed" + Environment.NewLine + ex.Message + Environment.NewLine + ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
 
+            return STSKLEList;
         }
 
-        public KlassifikationSystemPortTypeClient GetKlassifikationSystemPortTypeClient(string caseServiceEndPoint, string certificateSerialNumber)
+
+        private fremsoegobjekthierarkiRequest CreateSearch(string brugerVendtNoegle, string offset)
         {
-            System.Security.Cryptography.X509Certificates.X509FindType CertificateFindType =
-                                        System.Security.Cryptography.X509Certificates.X509FindType.FindBySerialNumber;
+            RequestHeaderType requestHeaderType = GetRequestHeaderType();
 
-            System.ServiceModel.BasicHttpBinding binding = new System.ServiceModel.BasicHttpBinding(BasicHttpSecurityMode.Transport);
-            binding.Security.Transport.ClientCredentialType = System.ServiceModel.HttpClientCredentialType.Certificate;
-            binding.MaxReceivedMessageSize = 2147483647;
-
-
-            System.ServiceModel.EndpointAddress remoteAddress =
-                                new System.ServiceModel.EndpointAddress(caseServiceEndPoint);
-
-            KlassifikationSystemPortTypeClient client = new KlassifikationSystemPortTypeClient(binding, remoteAddress);
-            client.ChannelFactory.Credentials.ClientCertificate.SetCertificate(System.Security.Cryptography.X509Certificates.StoreLocation.LocalMachine,
-                                                                               System.Security.Cryptography.X509Certificates.StoreName.My, CertificateFindType,
-                                                                               certificateSerialNumber);
-            return client;
+            return new fremsoegobjekthierarkiRequest
+            {
+                RequestHeader = requestHeaderType,
+                FremsoegObjekthierarkiInput = new FremsoegObjekthierarkiInputType
+                {
+                    KlassifikationSoegEgenskab = new EgenskabType
+                    {
+                        BrugervendtNoegleTekst = brugerVendtNoegle
+                    },
+                    SoegVirkning = new SoegVirkningType { FraTidspunkt = new TidspunktType { Item = true }, TilTidspunkt = new TidspunktType { Item = DateTime.Now } },
+                    MaksimalAntalKvantitet = MaxRetrieval.ToString(),
+                    FoersteResultatReference = offset,
+                }
+            };
         }
+
+        public KlassifikationSystemPortType GetKlassifikationSystemPortTypeClient(FKContext fKContext, SecurityToken token)
+        {
+            SoapBinding soapBinding = new SoapBinding();
+            soapBinding._maxReceivedMessageSize = 2147483647;
+
+            EndpointIdentity identity = EndpointIdentity.CreateDnsIdentity(fKContext.FKClassficationCertificateAlias);
+            EndpointAddress endpointAddress = new EndpointAddress(new Uri(fKContext.Endpoint), identity);
+
+
+            KlassifikationSystemPortTypeClient client = new KlassifikationSystemPortTypeClient(soapBinding, endpointAddress);
+
+            // loads the funtioncertifikat for klassification service
+            client.ChannelFactory.Credentials.ServiceCertificate.SetDefaultCertificate(System.Security.Cryptography.X509Certificates.StoreLocation.LocalMachine,
+                                                                                       System.Security.Cryptography.X509Certificates.StoreName.My,
+                                                                                       System.Security.Cryptography.X509Certificates.X509FindType.FindBySerialNumber,
+                                                                                       fKContext.FKClassficationCertificateSerialNumber);
+
+
+            // loads the functioncertificat installed on the anvendersystem
+            client.ChannelFactory.Credentials.ClientCertificate.SetCertificate(System.Security.Cryptography.X509Certificates.StoreLocation.LocalMachine,
+                                                                               System.Security.Cryptography.X509Certificates.StoreName.My,
+                                                                               System.Security.Cryptography.X509Certificates.X509FindType.FindBySerialNumber,
+                                                                               fKContext.ClientCertificate);
+
+            //IN PROD DONT..
+            client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+            System.ServiceModel.Security.X509CertificateValidationMode.None;
+
+
+            // This sets the MINIMUM level. Since the request header should not be signed, we set it to none.
+            client.Endpoint.Contract.ProtectionLevel = ProtectionLevel.None;
+
+            // adding the custom beheviors from Digst.OioIdws.Soap
+            ClientMessageInspectorBehavior c = new ClientMessageInspectorBehavior();
+            SoapClientBehavior s = new SoapClientBehavior();
+            client.ChannelFactory.Endpoint.EndpointBehaviors.Add(c);
+            client.ChannelFactory.Endpoint.EndpointBehaviors.Add(s);
+
+            return client.ChannelFactory.CreateChannelWithIssuedToken(token);
+        }
+
 
         public RequestHeaderType GetRequestHeaderType()
         {

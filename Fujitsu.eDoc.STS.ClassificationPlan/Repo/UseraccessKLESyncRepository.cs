@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Fujitsu.eDoc.STS.ClassificationPlan.BLL;
+using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fujitsu.eDoc.STS.ClassificationPlan.BLL;
-using Fujitsu.eDoc.STS.ClassificationPlan.Model;
-using static Fujitsu.eDoc.STS.ClassificationPlan.KlassifikationSystemService;
 
 namespace Fujitsu.eDoc.STS.ClassificationPlan.Repo
 {
@@ -27,7 +21,7 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan.Repo
             try
             {
                 _connection.Open();
-    
+
                 trans = _connection.BeginTransaction();
                 cmduseraccessSync.Transaction = trans;
                 cmduseraccessSync.CommandTimeout = 600;

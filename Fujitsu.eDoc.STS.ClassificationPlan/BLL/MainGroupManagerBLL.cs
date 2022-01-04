@@ -1,12 +1,6 @@
 ﻿using Fujitsu.eDoc.STS.ClassificationPlan.Model;
 using Fujitsu.eDoc.STS.ClassificationPlan.Repo;
-using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using static Fujitsu.eDoc.STS.ClassificationPlan.KlassifikationSystemService;
 
 namespace Fujitsu.eDoc.STS.ClassificationPlan.BLL

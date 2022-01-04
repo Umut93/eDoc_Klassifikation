@@ -1,17 +1,14 @@
-﻿using Fujitsu.eDoc.STS.ClassificationPlan;
+﻿using Fujitsu.eDoc.Organisation.FKIntegration;
+using Fujitsu.eDoc.Organisation.FKIntegration.Invocation;
+using Fujitsu.eDoc.Organisation.Integration.Models;
 using Fujitsu.eDoc.STS.ClassificationPlan.BLL;
 using Fujitsu.eDoc.STS.ClassificationPlan.Model;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.IO;
+using System.IdentityModel.Tokens;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
 using static Fujitsu.eDoc.STS.ClassificationPlan.KlassifikationSystemService;
 
 namespace Fujitsu.eDoc.STS.ClassificationPlan.ProcessEngine
@@ -19,19 +16,27 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan.ProcessEngine
     public class BatchClassificationPlanJob
     {
         IKlassifikationSystemService klassifikationSystemService;
-        MainGroupManagerBLL mainGroupMangerBLL = new MainGroupManagerBLL();
-        SecondLevelManagerBLL secondLevelManagerBLL = new SecondLevelManagerBLL();
-        ThirdLevelManagerBLL thirdLevelManagerBLL = new ThirdLevelManagerBLL();
-        FacetManagerBLL facetManagerBLL = new FacetManagerBLL();
-        UserAccessKLESyncManagerBLL userAccessKLESyncManagerBLL = new UserAccessKLESyncManagerBLL();
+        private MainGroupManagerBLL mainGroupMangerBLL = new MainGroupManagerBLL();
+        private SecondLevelManagerBLL secondLevelManagerBLL = new SecondLevelManagerBLL();
+        private ThirdLevelManagerBLL thirdLevelManagerBLL = new ThirdLevelManagerBLL();
+        private FacetManagerBLL facetManagerBLL = new FacetManagerBLL();
+        private UserAccessKLESyncManagerBLL userAccessKLESyncManagerBLL = new UserAccessKLESyncManagerBLL();
+        private SecurityToken token;
+        private FKContext fkContext;
 
         public async Task BatchSyncClassificationPlan()
         {
             string progress = "BatchSyncClassificationPlan - start";
             try
             {
-                //Resolves TLS issues when calling WCF webservice
+                fkContext = FKContextFetcher.GetSettings();
+
+                //Get token first
                 System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
+                token = TokenFetcher.IssueToken(fkContext);
+
+                //Resolves TLS issues when calling WCF webservice
                 klassifikationSystemService = new KlassifikationSystemService();
 
                 progress = "Initializing";
@@ -40,20 +45,14 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan.ProcessEngine
                 Task<List<NoarkSubArchive>> noarkSubArchives = Task.Run(() => NoarkSubArchive.GetNoarkSubArchives());
                 Task<List<NoarkClassificationType>> noarkClassTypes = Task.Run(() => NoarkClassificationType.GetGetNoarkClassificationTypes());
 
-                //Get settings
-                Dictionary<string, string> codeTableConfigRecords = GetSAPASettings();
-                string endpoint = codeTableConfigRecords["ClassificationEndpoint"];
-                string certificate = codeTableConfigRecords["ClassificationCertificateSerialNumber"];
-                string cvr = Fujitsu.eDoc.Core.eDocSettingInformation.GetSettingValueFromeDoc("fujitsu", "municipalitycvr");
-                Task<List<STSKLE>> stsKLEGUIDs = klassifikationSystemService.FremsoegobjekthierarkiAsync(cvr, endpoint, certificate, "KLE");
+                List<STSKLE> stsKLEGUIDs = klassifikationSystemService.Fremsoegobjekthierarki(fkContext, "KLE", token);
 
                 //Waiting for completing all tasks
                 progress = "Waiting for completing all tasks";
-                await Task.WhenAll(eDocEmnePlaner, stsKLEGUIDs, noarkSubArchives, noarkClassTypes);
+                await Task.WhenAll(eDocEmnePlaner, noarkSubArchives, noarkClassTypes);
 
                 //Results
                 progress = "Getting Results";
-                List<STSKLE> stsKLES = await stsKLEGUIDs;
                 List<EdocEmnePlan> eDocKlES = await eDocEmnePlaner;
                 List<EdocEmnePlan> eDocFacets = await eDocFacetPlaner;
                 List<NoarkSubArchive> noarkSubs = await noarkSubArchives;
@@ -64,7 +63,7 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan.ProcessEngine
                 // Processing emneFacectter
                 progress = "Processing emneFacectter";
                 Regex regex = new Regex("^\\d+(\\.?\\d+\\.?\\d+)?$");
-                List<ParagraphTitles> stsTitles = stsKLES.Where(y => regex.IsMatch(y.Code)).Select(x => new ParagraphTitles(x.Code, x.TitleText, x.UUID, x.IsExpired)).ToList();
+                List<ParagraphTitles> stsTitles = stsKLEGUIDs.Where(y => regex.IsMatch(y.Code)).Select(x => new ParagraphTitles(x.Code, x.TitleText, x.UUID, x.IsExpired)).ToList();
                 List<ParagraphTitles> stsSortedTitles = stsTitles.OrderBy(x => x).ToList();
                 ParagraphTitles stsRoot = new ParagraphTitles();
                 stsRoot.CreateTree(stsSortedTitles, 0);
@@ -86,7 +85,7 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan.ProcessEngine
                 //HandlingsFacetter
                 progress = "Handling HandlingsFacetter";
                 Regex facetRegex = new Regex("^[A-ZÆØÅ][0-9]{0,2}$");
-                List<STSKLE> facets = stsKLES.Where(y => facetRegex.IsMatch(y.Code)).ToList();
+                List<STSKLE> facets = stsKLEGUIDs.Where(y => facetRegex.IsMatch(y.Code)).ToList();
                 facetManagerBLL.CreateFacet(facets, eDocFacets);
 
                 //Sync STS useraccess
@@ -99,40 +98,6 @@ namespace Fujitsu.eDoc.STS.ClassificationPlan.ProcessEngine
                 EventLog.LogToEventLog(progress + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace, System.Diagnostics.EventLogEntryType.Error);
             }
 
-        }
-
-
-        public static Dictionary<string, string> GetSAPASettings()
-        {
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-            try
-            {
-                string xmlQuery = Core.Common.GetResourceXml("GetCodeTableValues.xml", typeof(EdocEmnePlan).Namespace.Replace("Model", "XML"), Assembly.GetExecutingAssembly());
-
-                var res = Fujitsu.eDoc.Core.Common.ExecuteQuery(xmlQuery);
-
-                XDocument xDoc = XDocument.Parse(res);
-
-                if (xDoc != null)
-                {
-
-                    var RECORD = xDoc.Descendants("RECORD").ToList(); ;
-
-
-                    foreach (var r in RECORD)
-                    {
-                        dic.Add(r.Element("Key").Value, r.Element("Value").Value);
-                    };
-
-                    return dic;
-                }
-                return dic;
-            }
-            catch (Exception ex)
-            {
-                EventLog.LogToEventLog($"72ab5a9a-76e6-468a-8083-857902e1919f - {System.Environment.NewLine} {ex.ToString()}", System.Diagnostics.EventLogEntryType.Error);
-            }
-            return dic;
         }
     }
 }
