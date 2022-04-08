@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31912.275
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fujitsu.eDoc.ClassCodeAdmin", "Fujitsu.eDoc.ClassCodeAdmin\Fujitsu.eDoc.ClassCodeAdmin.csproj", "{3C4BFBC9-3E6B-4EDA-AD76-7633E77B5B6D}"
 EndProject
@@ -10,6 +10,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KLPlanUpdate", "KLPlanUpdate\KLPlanUpdate.csproj", "{B36DE586-F822-4A71-9600-419D48B277CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fujitsu.eDoc.STS.ClassificationPlan", "Fujitsu.eDoc.STS.ClassificationPlan\Fujitsu.eDoc.STS.ClassificationPlan.csproj", "{5BF71376-C54D-462E-A769-0FF2E4877B62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fujitsu.Edoc.SIData", "Fujitsu.eDoc.SIData\Fujitsu.Edoc.SIData.csproj", "{8BD142E5-31CD-4BAA-A847-3F6CD5BC9E90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fujitsu.Edoc.EdocUtilities", "Fujitsu.eDoc.EdocUtilities\Fujitsu.Edoc.EdocUtilities.csproj", "{D96D4BE1-C86C-4206-ACC9-617AC4B6FA4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fujitsu.eDoc.ClassCodeAdminClient", "Fujitsu.eDoc.ClassCodeAdminClient\Fujitsu.eDoc.ClassCodeAdminClient.csproj", "{EC15486A-C590-4BB0-8749-19462CFA6DA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fujitsu.eDoc.ScrapCode", "Fujitsu.eDoc.ScrapCode\Fujitsu.eDoc.ScrapCode.csproj", "{8647DEDE-6173-4CDF-981F-2AE14FD5AB0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fujitsu.eDoc.UnitTesting", "Fujitsu.eDoc.UnitTesting\Fujitsu.eDoc.UnitTesting.csproj", "{FB307751-7C73-4FE9-8F1B-BEE70C298DC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +43,26 @@ Global
 		{5BF71376-C54D-462E-A769-0FF2E4877B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BF71376-C54D-462E-A769-0FF2E4877B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BF71376-C54D-462E-A769-0FF2E4877B62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BD142E5-31CD-4BAA-A847-3F6CD5BC9E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BD142E5-31CD-4BAA-A847-3F6CD5BC9E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BD142E5-31CD-4BAA-A847-3F6CD5BC9E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BD142E5-31CD-4BAA-A847-3F6CD5BC9E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D96D4BE1-C86C-4206-ACC9-617AC4B6FA4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D96D4BE1-C86C-4206-ACC9-617AC4B6FA4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D96D4BE1-C86C-4206-ACC9-617AC4B6FA4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D96D4BE1-C86C-4206-ACC9-617AC4B6FA4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC15486A-C590-4BB0-8749-19462CFA6DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC15486A-C590-4BB0-8749-19462CFA6DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC15486A-C590-4BB0-8749-19462CFA6DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC15486A-C590-4BB0-8749-19462CFA6DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8647DEDE-6173-4CDF-981F-2AE14FD5AB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8647DEDE-6173-4CDF-981F-2AE14FD5AB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8647DEDE-6173-4CDF-981F-2AE14FD5AB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8647DEDE-6173-4CDF-981F-2AE14FD5AB0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB307751-7C73-4FE9-8F1B-BEE70C298DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB307751-7C73-4FE9-8F1B-BEE70C298DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB307751-7C73-4FE9-8F1B-BEE70C298DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB307751-7C73-4FE9-8F1B-BEE70C298DC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
