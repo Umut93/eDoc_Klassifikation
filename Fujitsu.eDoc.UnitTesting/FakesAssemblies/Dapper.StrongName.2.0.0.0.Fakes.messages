@@ -1,0 +1,57 @@
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for ThisAssembly: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.CustomPropertyTypeMap: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.DataTableHandler: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.DbString: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.DefaultTypeMap: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.ExplicitConstructorAttribute: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.Extensions: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.FeatureSupport: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.SimpleMemberMap: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.SqlDataRecordHandler`1: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.SqlDataRecordListTVPParameter`1: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.StructuredHelper: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.SqlMapper: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.TableValuedParameter: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.TypeExtensions: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.DisposedReader: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.WrappedReader: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.DbWrappedReader: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.BasicWrappedReader: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.XmlTypeHandler`1: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.XmlDocumentHandler: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.XDocumentHandler: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate stub for Dapper.XElementHandler: Type is sealed.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for ThisAssembly: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.DataTableHandler: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.DynamicParameters+CachedOutputSetters`1: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.DynamicParameters+ParamInfo: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.Extensions: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.FeatureSupport: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SimpleMemberMap: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlDataRecordHandler`1: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlDataRecordListTVPParameter`1: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.StructuredHelper: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+AsyncExecState: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+CacheInfo: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+DapperRow: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+DapperRowMetaObject: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+DapperTable: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+DeserializerState: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+DontMap: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+IdentityWithTypes: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+Identity`7: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+Link`2: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+LiteralToken: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+PropertyInfoByNameComparer: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+TypeDeserializerCache: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.SqlMapper+TypeHandlerCache`1: Type is obsolete.
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.TableValuedParameter: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.TypeExtensions: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.DisposedReader: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.WrappedReader: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.DbWrappedReader: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.BasicWrappedReader: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.XmlTypeHandler`1: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.XmlDocumentHandler: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.XDocumentHandler: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
+E:\D2\5.0\Source\Emneord\Fujitsu.eDoc.UnitTesting\Fakes\Dapper.StrongName.fakes : warning : Cannot generate shim for Dapper.XElementHandler: Type is not visible to exported or assembly(Dapper.StrongName.2.0.0.0.Fakes).
